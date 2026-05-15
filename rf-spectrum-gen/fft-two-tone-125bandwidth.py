@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # --- System Parameters ---
-fs = 250e6               # Sampling frequency (125 MHz)
+fs = 125e6               # Sampling frequency (125 MHz)
 N = 8192                 # Number of samples for FFT
 duration = N / fs        # Total time duration of the capture
 
@@ -18,7 +18,7 @@ t = np.linspace(0, duration, N, endpoint=False)
 signal = 1.0 * np.sin(2 * np.pi * f1 * t) + 1.0 * np.sin(2 * np.pi * f2 * t)
 
 # --- Add Noise (Optional but realistic for RF simulations) ---
-noise = np.random.normal(0, 0.5, N)
+noise = np.random.normal(0, 0.1, N)
 signal += noise
 
 # --- Compute Spectrum (FFT) ---
@@ -32,8 +32,8 @@ freqs = np.fft.fftfreq(N, d=1/fs)
 # Shift zero-frequency to the center if you want a baseband representation, 
 # or just plot positive frequencies for real-valued signals.
 # For simplicity, we'll plot the positive half (up to Nyquist: 62.5 MHz).
-freqs_positive = freqs[:N//2] / 1e6 # in MHz
-magnitude_positive = magnitude[:N//2]
+freqs_positive = freqs / 1e6 # in MHz
+magnitude_positive = magnitude
 
 # --- Plot the RF Spectrum ---
 plt.figure(figsize=(10, 6))
