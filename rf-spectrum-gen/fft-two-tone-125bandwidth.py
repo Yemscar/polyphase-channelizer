@@ -32,7 +32,7 @@ freqs = np.fft.fftfreq(N, d=1/fs)
 # Shift zero-frequency to the center if you want a baseband representation, 
 # or just plot positive frequencies for real-valued signals.
 # For simplicity, we'll plot the positive half (up to Nyquist: 62.5 MHz).
-freqs_positive = freqs / 1e6 # in MHz
+freqs_positive = freqs # in MHz
 magnitude_positive = magnitude
 
 # --- Plot the RF Spectrum ---
