@@ -1,5 +1,6 @@
-import numpy as np
 import matplotlib.pyplot as plt
+from scipy import signal
+import numpy as np
 
 # --- System Parameters ---
 fs = 250e6               # Sampling frequency (125 MHz)
@@ -46,3 +47,27 @@ plt.ylim(-60, 10)     # Set appropriate dB scale
 plt.grid(True, which='both', linestyle='--', alpha=0.7)
 plt.tight_layout()
 plt.savefig('fftw125-2.png')
+
+# 1. Reshape signal to match polyphase branches
+# x is input, num_channels (M) is the decimation factor
+x_reshaped = magnitude_positive[:len(magnitude_positive)//8 * 8].reshape(-1, 8)
+    
+# 2. Reshape taps into PFB sub-filters
+
+num_channels = 8  # Number of channels (M)
+num_taps_per_branch = 12  # Number of coefficients per sub-filter
+total_taps = num_channels * num_taps_per_branch
+
+# Design a low-pass filter using a windowed sinc function
+# Cutoff frequency is typically 1 / num_channels
+taps = signal.firwin(total_taps, 1.0/num_channels)
+p_taps = taps.reshape(8, -1)
+    
+# 3. Filter each branch and apply FFT
+pfb_output = np.zeros((x_reshaped.shape[0], 8), dtype=complex)
+for i in range(8):
+    pfb_output[:, i] = signal.lfilter(p_taps[i], 1, x_reshaped[:, i])
+  
+# Efficiently shift all channels to baseband
+pfb_ifft = np.fft.ifft(pfb_output, axis=1)
+
