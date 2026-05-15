@@ -7,12 +7,11 @@ def generate_rf_spectrum():
     fs = 125e6           # Sample Rate / Bandwidth (in Hz)
     f1 = 25e6            # Frequency of Tone 1 (in Hz)
     f2 = 50e6            # Frequency of Tone 2 (in Hz)
-    duration = 1      # Duration of the signal in seconds
+    duration = 0.01 # Duration of the signal in seconds
     noise_power = 0.1    # Add a baseline noise floor
     
     # --- Time Vector & Signal Generation ---
     t = np.arange(0, duration, 1 / fs)
-    print(len(t))
     # Two tones + Gaussian noise
     signal = (np.cos(2 * np.pi * f1 * t) + 
               np.cos(2 * np.pi * f2 * t) + 
@@ -20,9 +19,9 @@ def generate_rf_spectrum():
 
     # --- Power Spectral Density (PSD) ---
     # We use Welch's method to estimate the RF spectrum accurately
-    f, psd = welch(signal, fs=fs, nperseg=2048)
+    f, psd = welch(signal, fs=fs, nperseg=4096)
     psd_db = 10 * np.log10(psd / np.max(psd)) # Normalize to dB
-
+    print(len(f))
     # --- Plotting ---
     plt.figure(figsize=(10, 5))
     plt.plot(f / 1e3, psd_db, color='cyan', linewidth=1.5)
