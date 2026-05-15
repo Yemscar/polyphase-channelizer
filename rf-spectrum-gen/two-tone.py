@@ -30,7 +30,7 @@ def generate_rf_spectrum():
     plt.title('Simulated RF Spectrum (Two Tones)')
     plt.xlabel('Frequency (kHz)')
     plt.ylabel('Power Spectral Density (dB)')
-    plt.xlim(0, fs / 125e6)
+    plt.xlim(0, fs / 1e3)
     plt.ylim(-60, 5) # Set dynamic range
     plt.grid(True, which='both', linestyle='--', alpha=0.5)
     plt.tight_layout()
