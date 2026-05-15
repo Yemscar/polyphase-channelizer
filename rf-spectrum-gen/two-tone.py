@@ -4,9 +4,9 @@ from scipy.signal import welch
 
 def generate_rf_spectrum():
     # --- Parameters ---
-    fs = 200e3           # Sample Rate / Bandwidth (in Hz)
-    f1 = 25e3            # Frequency of Tone 1 (in Hz)
-    f2 = 75e3            # Frequency of Tone 2 (in Hz)
+    fs = 125e6           # Sample Rate / Bandwidth (in Hz)
+    f1 = 25e6            # Frequency of Tone 1 (in Hz)
+    f2 = 50e6            # Frequency of Tone 2 (in Hz)
     duration = 0.01      # Duration of the signal in seconds
     noise_power = 0.1    # Add a baseline noise floor
     
@@ -30,7 +30,7 @@ def generate_rf_spectrum():
     plt.title('Simulated RF Spectrum (Two Tones)')
     plt.xlabel('Frequency (kHz)')
     plt.ylabel('Power Spectral Density (dB)')
-    plt.xlim(0, fs / 1e3)
+    plt.xlim(0, fs / 125e6)
     plt.ylim(-60, 5) # Set dynamic range
     plt.grid(True, which='both', linestyle='--', alpha=0.5)
     plt.tight_layout()
