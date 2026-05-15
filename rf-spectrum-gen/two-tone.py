@@ -7,7 +7,7 @@ def generate_rf_spectrum():
     fs = 125e6           # Sample Rate / Bandwidth (in Hz)
     f1 = 25e6            # Frequency of Tone 1 (in Hz)
     f2 = 50e6            # Frequency of Tone 2 (in Hz)
-    duration = 0.01      # Duration of the signal in seconds
+    duration = 1      # Duration of the signal in seconds
     noise_power = 0.1    # Add a baseline noise floor
     
     # --- Time Vector & Signal Generation ---
@@ -25,7 +25,7 @@ def generate_rf_spectrum():
 
     # --- Plotting ---
     plt.figure(figsize=(10, 5))
-    plt.plot(f , psd_db, color='cyan', linewidth=1.5)
+    plt.plot(f / 1e3, psd_db, color='cyan', linewidth=1.5)
     
     plt.title('Simulated RF Spectrum (Two Tones)')
     plt.xlabel('Frequency (kHz)')
