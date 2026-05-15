@@ -7,7 +7,7 @@ def generate_rf_spectrum():
     fs = 125e6           # Sample Rate / Bandwidth (in Hz)
     f1 = 25e6            # Frequency of Tone 1 (in Hz)
     f2 = 50e6            # Frequency of Tone 2 (in Hz)
-    duration = 0.01      # Duration of the signal in seconds
+    duration = 0.1      # Duration of the signal in seconds
     noise_power = 0.1    # Add a baseline noise floor
     
     # --- Time Vector & Signal Generation ---
