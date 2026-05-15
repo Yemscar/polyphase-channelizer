@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # --- System Parameters ---
-fs = 125e6               # Sampling frequency (125 MHz)
+fs = 250e6               # Sampling frequency (125 MHz)
 N = 8192                 # Number of samples for FFT
 duration = N / fs        # Total time duration of the capture
 
