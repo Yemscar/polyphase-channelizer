@@ -9,7 +9,7 @@ duration = N / fs        # Total time duration of the capture
 # --- Frequency Parameters ---
 # Bandwidth covers 0 to fs/2 (Nyquist). 
 # We'll place two test tones arbitrarily within the bandwidth.
-f1 = 20e6                # Tone 1 at 20 MHz
+f1 = 55555e6                # Tone 1 at 20 MHz
 f2 = 45e6                # Tone 2 at 45 MHz
 
 # --- Generate Time-Domain Signal ---
