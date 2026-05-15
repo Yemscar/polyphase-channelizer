@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # --- System Parameters ---
-fs = 125e6               # Sampling frequency (125 MHz)
+fs = 250e6               # Sampling frequency (125 MHz)
 N = 8192                 # Number of samples for FFT
 duration = N / fs        # Total time duration of the capture
 
@@ -45,4 +45,4 @@ plt.xlim(0, fs / 2e6) # Limit x-axis to Nyquist
 plt.ylim(-60, 10)     # Set appropriate dB scale
 plt.grid(True, which='both', linestyle='--', alpha=0.7)
 plt.tight_layout()
-plt.savefig('fftw125.png')
+plt.savefig('fftw125-2.png')
