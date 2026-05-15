@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 from scipy import signal
 
 # Parameters
-fs = 100e6           # Sample rate (100 MHz)
-bandwidth = 10e6      # Desired signal bandwidth (10 MHz)
+fs = 1000e6           # Sample rate (100 MHz)
+bandwidth = 100e6      # Desired signal bandwidth (10 MHz)
 duration = 1e-6       # 1 microsecond
 t = np.arange(0, duration, 1/fs)
 
@@ -25,4 +25,4 @@ plt.psd(rf_signal, Fs=fs/1e6)
 plt.title(f"Simulated {bandwidth/1e6} MHz Bandwidth Signal")
 plt.xlabel("Frequency (MHz)")
 plt.show()
-plt.savefig('rf-spectrum.png')
+plt.savefig('rf-spectrum-100.png')
