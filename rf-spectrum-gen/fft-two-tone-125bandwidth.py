@@ -41,8 +41,8 @@ plt.plot(freqs_positive, magnitude_positive, color='blue', linewidth=1.2)
 plt.title('Simulated RF Spectrum (Two Tones)')
 plt.xlabel('Frequency (MHz)')
 plt.ylabel('Power (dBFS)')
-plt.xlim(0, fs / 2e6) # Limit x-axis to Nyquist
-plt.ylim(-60, 10)     # Set appropriate dB scale
+plt.xlim(0, fs / 1e6) # Limit x-axis to Nyquist
+plt.ylim(-60, 1)     # Set appropriate dB scale
 plt.grid(True, which='both', linestyle='--', alpha=0.7)
 plt.tight_layout()
 
